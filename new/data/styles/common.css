@@ -1,0 +1,23 @@
+html.dark,
+html.dark body {
+  color: var(--dp-f-v2) !important;
+  background-color: var(--dp-b-v1) !important;
+}
+
+html.dark #captcha-form ~ div > a {
+  color: var(--dp-f-b);
+}
+
+html.dark ::selection {
+  background-color: var(--dp-s-b);
+  color: var(--dp-s-c);
+}
+
+html.dark header {
+  background-color: var(--dp-b-v1) !important;
+}
+
+/* login text */
+html.dark #gb a.gb_4.gb_4 {
+  color: var(--dp-f-v1);
+}

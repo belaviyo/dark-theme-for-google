@@ -1,0 +1,102 @@
+/* search href */
+html.dark .TbwUpd * {
+  color: var(--dp-f-g);
+}
+
+/* search box*/
+html.dark div.RNNXgb:hover {
+  box-shadow: none;
+}
+html.dark div.aajZCb {
+  box-shadow: none;
+  border: solid 1px var(--dp-s-v2);
+  border-top: none;
+}
+
+/* sticky header */
+html.dark .minidiv .sfbg {
+  box-shadow: 0 1px 0 0 var(--dp-s-v1);
+}
+
+html.dark .w8qArf .fl {
+  color: var(--dp-f-v1) !important;
+}
+html.dark .i8Msie {
+  filter: invert(1);
+}
+
+html.dark div.ab_button,
+html.dark a.ab_button,
+html.dark a.ab_button:visited {
+  color: var(--dp-f-d1) !important;
+}
+
+/* score box */
+html.dark .YPgUJe {
+  box-shadow: none;
+}
+
+/* tools */
+html.dark .hdtb-tl-sel {
+  background: none;
+}
+html.dark .GshZze:not(.hdtb-tl-sel):hover {
+  background: none;
+}
+
+/* tools -> last hour arrow */
+html.dark .nvELY {
+  filter: invert(1);
+}
+
+/* inline translator */
+html.dark #tw-source-text-container .tw-ta, #tw-source-rmn-container .tw-ta {
+  color: var(--front-light-color);
+}
+/* inline translator verified icon */
+html.dark .XrZwB img {
+  filter: invert(1);
+}
+
+/* homepage buttons */
+html.dark .jhp input[type="submit"],
+html.dark .sbdd_a input,
+html.dark .gbqfba {
+  background: none;
+  background-color: var(--dp-b-b);
+}
+/* homepage google products icon */
+html.dark .gb_D.gb_sc {
+  filter: invert(1);
+}
+
+/* timer */
+html.dark .act-tim-txt-cnt div,
+html.dark .wf-b .TVtOme div,
+html.dark .act-timer-section .act-tim-paused .act-tim-txt-cnt div {
+  color: var(--dp-f-v2) !important;
+  background-color: var(--dp-b-v1) !important;
+}
+html.dark .act-tim-fullscreen-lbl img,
+html.dark .act-tim-cancel-fullscreen-lbl img,
+html.dark .act-tim-mute-lbl img,
+html.dark .act-tim-unmute-lbl img,
+html.dark .act-inactive-tab .act-inactive-timer-icon,
+html.dark .act-inactive-tab .act-inactive-stopwatch-icon {
+  filter: invert(1);
+}
+
+/* map fullscreen icon */
+html.dark .adgvqc img {
+  filter: invert(1);
+}
+
+/* selected search query */
+html.dark .sbhl {
+  background-color: var(--dp-b-v2) !important;
+}
+
+/* text correction underline on search box */
+html.dark .pR49Ae span {
+  filter: invert(1);
+}
