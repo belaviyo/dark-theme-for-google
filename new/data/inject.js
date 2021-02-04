@@ -10,12 +10,14 @@
   https://translate.google.com/?sl=en&tl=es&text=This%0A&op=translate
   https://www.google.com/search?hl=en&ei=eh8NYOq5BK6C9PwPoNGIwAo&q=timer&oq=timer&gs_lcp=CgZwc3ktYWIQAzIHCAAQsQMQQzIECAAQQzIHCAAQsQMQQzIECAAQQzIECC4QQzIECC4QQzIHCAAQsQMQQzIICC4QsQMQgwEyBAgAEEMyAggAOggIABCwAxCRAjoJCAAQsAMQBxAeOgUIABCwAzoICAAQsQMQsAM6BQgAELEDOggIABCxAxCDAToOCC4QsQMQgwEQxwEQowI6CwguELEDEMcBEKMCOgcILhCxAxBDUIETWLkWYKoXaAJwAHgAgAG9AogBlweSAQUyLTEuMpgBAKABAaoBB2d3cy13aXrIAQrAAQE&sclient=psy-ab&ved=0ahUKEwjq3rHsg7TuAhUuAZ0JHaAoAqgQ4dUDCA0&uact=5
   https://www.google.com/search?biw=1240&bih=1307&ei=TCENYO2DAvGJ1fAPmNONkAk&q=color+picker&oq=color+picker&gs_lcp=CgZwc3ktYWIQAzIICAAQsQMQyQMyAggAMgIIADIFCAAQsQMyAggAMgIIADICCAAyAggAMgIIADICCAA6BwgAEEcQsAM6BQgAEJECOgQIABBDOgoIABCxAxCDARBDOggILhCxAxCDAToLCC4QsQMQxwEQowI6CAgAELEDEIMBOggIABDJAxCRAjoKCC4QsQMQgwEQQzoHCAAQsQMQQzoCCC46BwgAELEDEApQovMCWI-CA2DxggNoA3ACeACAAdUCiAG2FJIBBzAuNC42LjGYAQCgAQGqAQdnd3Mtd2l6yAEIwAEB&sclient=psy-ab&ved=0ahUKEwjt2cnKhbTuAhXxRBUIHZhpA5IQ4dUDCA0&uact=5
+  https://www.google.com/search?client=firefox-b-d&q=wert#dobs=ok
 */
 
 const DARK = 'dark';
 
 const prefs = {
   'enabled': true,
+
   'bg-color': '#101111',
   'bg-light-color': '#222324',
   'link-color': '#9bb6df',
@@ -25,7 +27,6 @@ const prefs = {
   'selection-color': '#eeeeee',
   'selection-bg': '#404040',
   'button-bg': '#1a73e8',
-
   'front-light-color': '#e7e2dc',
   'front-dark-color': '#1e2022',
   'box-shadow-color': '#37383b',
@@ -48,17 +49,23 @@ const prefs = {
 };
 
 const style = document.documentElement.style;
-style.setProperty('--dp-f-g', prefs['link-header-color']);
-style.setProperty('--dp-f-b', prefs['link-color']);
-style.setProperty('--dp-f-v1', prefs['front-light-color']);
-style.setProperty('--dp-f-v2', prefs['front-color']);
-style.setProperty('--dp-f-d1', prefs['front-dark-color']);
-style.setProperty('--dp-b-v1', prefs['bg-light-color']);
-style.setProperty('--dp-b-v2', prefs['bg-color']);
-style.setProperty('--dp-s-v1', prefs['box-shadow-color']);
-style.setProperty('--dp-s-v2', prefs['border-light-color']);
-style.setProperty('--dp-b-b', prefs['button-bg']);
-
+const root = () => {
+  style.setProperty('--bg-color', prefs['bg-color']);
+  style.setProperty('--bg-light-color', prefs['bg-light-color']);
+  style.setProperty('--link-color', prefs['link-color']);
+  style.setProperty('--visited-color', prefs['visited-color']);
+  style.setProperty('--link-header-color', prefs['link-header-color']);
+  style.setProperty('--front-color', prefs['front-color']);
+  style.setProperty('--selection-color', prefs['selection-color']);
+  style.setProperty('--selection-bg', prefs['selection-bg']);
+  style.setProperty('--button-bg', prefs['button-bg']);
+  style.setProperty('--front-light-color', prefs['front-light-color']);
+  style.setProperty('--front-dark-color', prefs['front-dark-color']);
+  style.setProperty('--box-shadow-color', prefs['box-shadow-color']);
+  style.setProperty('--border-light-color', prefs['border-light-color']);
+  style.setProperty('--border-blue-color', prefs['border-blue-color']);
+};
+root();
 document.documentElement.classList.add(DARK);
 
 class Observe {
@@ -154,7 +161,13 @@ class Observe {
     if (str.startsWith('rgb')) {
       const r = /(\d+)[,\s]+(\d+)[,\s]+(\d+)[,\s]*([\d.]+)*/.exec(str);
       if (r) {
-        return {r: r[1], g: r[2], b: r[3], a: r[4] || 1, replace};
+        return {
+          r: parseInt(r[1]),
+          g: parseInt(r[2]),
+          b: parseInt(r[3]),
+          a: parseInt(r[4] || 1),
+          replace
+        };
       }
     }
     const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})/i.exec(str);
@@ -173,20 +186,20 @@ class Observe {
     const convert = ({r, g, b}) => {
       // red
       if ((r - g) > 50 && (b - g) > 50) {
-        return prefs['visited-color'];
+        return 'var(--visited-color)';
       }
       // blue
       if ((b - g) > 50 && (b - r) > 50) {
-        return prefs['link-color'];
+        return 'var(--link-color)';
       }
       // green
       else if ((g - b) > 50 && (g - r) > 50) {
-        return prefs['link-header-color'];
+        return 'var(--link-header-color)';
       }
       if (o.r > 60 && o.g > 60 && o.b > 60) {
-        return prefs['front-color'];
+        return 'var(--front-color)';
       }
-      return prefs['front-light-color'];
+      return 'var(--front-light-color)';
     };
 
     if (o) {
@@ -198,9 +211,9 @@ class Observe {
     const convert = ({r, g, b, replace}) => {
       // blue
       if ((b - g) > 50 && (b - r) > 50) {
-        return replace.replace('%%', prefs['button-bg']);
+        return replace.replace('%%', 'var(--button-bg)');
       }
-      return replace.replace('%%', prefs['bg-light-color']);
+      return replace.replace('%%', 'var(--bg-light-color)');
     };
     if (o) {
       if (o.a > 0.5) {
@@ -212,9 +225,9 @@ class Observe {
     const convert = ({r, g, b, replace}) => {
       // blue
       if ((b - g) > 50 && (b - r) > 50) {
-        return replace.replace('%%', prefs['border-blue-color']);
+        return replace.replace('%%', 'var(--border-blue-color)');
       }
-      return replace.replace('%%', prefs['border-light-color']);
+      return replace.replace('%%', 'var(--border-light-color)');
     };
 
     if (rule.style['border-top-color']) {
@@ -265,11 +278,9 @@ class Observe {
       const next = content => {
         const style = document.createElement('style');
         style.textContent = content;
-
-        const node = sheet.ownerNode;
-        node.parentElement.appendChild(style);
+        sheet.ownerNode.after(style);
       };
-      fetch(sheet.href).then(next).catch(() => chrome.runtime.sendMessage({
+      fetch(sheet.href).then(r => r.text()).then(next).catch(() => chrome.runtime.sendMessage({
         method: 'fetch',
         href: sheet.href
       }, next));
@@ -296,21 +307,27 @@ class Observe {
 
 const observe = new Observe();
 {
-  const observer = new MutationObserver(ms => {
-    let check = false;
-    const dup = node => {
-      const n = node.cloneNode(true);
-      n.classList.add(DARK);
-      node.parentElement.appendChild(n);
-    };
+  const dup = nodes => {
+    if (nodes.size) {
+      for (const node of nodes.values()) {
+        const n = node.cloneNode(true);
+        n.classList.add(DARK);
+        n.removeAttribute('nonce');
+        node.after(n);
+      }
+      observe.check();
+    }
+  };
+  // check for new style nodes
+  const no = new MutationObserver(ms => {
+    const nodes = new Set();
     for (const m of ms) {
       for (const node of m.addedNodes) {
         if (node.nodeType === Node.TEXT_NODE) {
           const {target} = m;
           if (target.tagName === 'STYLE') {
             if (target.classList.contains(DARK) === false) {
-              dup(target);
-              check = true;
+              nodes.add(target);
             }
           }
         }
@@ -320,20 +337,34 @@ const observe = new Observe();
           }
           if (node.tagName === 'STYLE') {
             if (node.classList.contains(DARK) === false && node.textContent) {
-              dup(node);
-              check = true;
+              nodes.add(node);
             }
           }
         }
       }
     }
-    if (check) {
-      observe.check();
-    }
+    dup(nodes);
   });
-  observer.observe(document.documentElement, {
+  no.observe(document.documentElement, {
     subtree: true,
     childList: true
+  });
+  // check for modified style nodes
+  const mo = new MutationObserver(ms => {
+    const nodes = new Set();
+    for (const {target} of ms) {
+      if (target.nodeType === Node.TEXT_NODE) {
+        const parent = target.parentElement;
+        if (parent.tagName === 'STYLE') {
+          nodes.add(parent);
+        }
+      }
+    }
+    dup(nodes);
+  });
+  mo.observe(document.documentElement, {
+    subtree: true,
+    characterData: true
   });
 }
 
@@ -395,31 +426,7 @@ const update = () => {
   if (location.pathname.startsWith('/travel') || location.pathname.startsWith('/flights')) {
     observe.exclude();
   }
-
-  if ('bg-color' in prefs) {
-    style.setProperty('--dp-b-v2', prefs['bg-color']);
-  }
-  if ('bg-light-color' in prefs) {
-    style.setProperty('--dp-b-v1', prefs['bg-light-color']);
-  }
-  if ('link-color' in prefs) {
-    style.setProperty('--dp-f-b', prefs['link-color']);
-  }
-  if ('visited-color' in prefs) {
-    style.setProperty('--dp-f-r', prefs['visited-color']);
-  }
-  if ('link-header-color' in prefs) {
-    style.setProperty('--dp-f-g', prefs['link-header-color']);
-  }
-  if ('front-color' in prefs) {
-    style.setProperty('--dp-f-v2', prefs['front-color']);
-  }
-  if ('selection-color' in prefs) {
-    style.setProperty('--dp-s-c', prefs['selection-color']);
-  }
-  if ('selection-bg' in prefs) {
-    style.setProperty('--dp-s-b', prefs['selection-bg']);
-  }
+  root();
   css.textContent = prefs['custom-css'];
 };
 

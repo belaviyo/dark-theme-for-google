@@ -1,6 +1,6 @@
 /* search href */
 html.dark .TbwUpd * {
-  color: var(--dp-f-g);
+  color: var(--link-header-color);
 }
 
 /* search box*/
@@ -9,17 +9,17 @@ html.dark div.RNNXgb:hover {
 }
 html.dark div.aajZCb {
   box-shadow: none;
-  border: solid 1px var(--dp-s-v2);
+  border: solid 1px var(--border-light-color);
   border-top: none;
 }
 
 /* sticky header */
 html.dark .minidiv .sfbg {
-  box-shadow: 0 1px 0 0 var(--dp-s-v1);
+  box-shadow: 0 1px 0 0 var(--box-shadow-color);
 }
 
 html.dark .w8qArf .fl {
-  color: var(--dp-f-v1) !important;
+  color: var(--front-light-color) !important;
 }
 html.dark .i8Msie {
   filter: invert(1);
@@ -28,7 +28,7 @@ html.dark .i8Msie {
 html.dark div.ab_button,
 html.dark a.ab_button,
 html.dark a.ab_button:visited {
-  color: var(--dp-f-d1) !important;
+  color: var(--front-dark-color) !important;
 }
 
 /* score box */
@@ -63,7 +63,7 @@ html.dark .jhp input[type="submit"],
 html.dark .sbdd_a input,
 html.dark .gbqfba {
   background: none;
-  background-color: var(--dp-b-b);
+  background-color: var(--button-bg);
 }
 /* homepage google products icon */
 html.dark .gb_D.gb_sc {
@@ -74,8 +74,8 @@ html.dark .gb_D.gb_sc {
 html.dark .act-tim-txt-cnt div,
 html.dark .wf-b .TVtOme div,
 html.dark .act-timer-section .act-tim-paused .act-tim-txt-cnt div {
-  color: var(--dp-f-v2) !important;
-  background-color: var(--dp-b-v1) !important;
+  color: var(--front-color) !important;
+  background-color: var(--bg-light-color) !important;
 }
 html.dark .act-tim-fullscreen-lbl img,
 html.dark .act-tim-cancel-fullscreen-lbl img,
@@ -93,10 +93,20 @@ html.dark .adgvqc img {
 
 /* selected search query */
 html.dark .sbhl {
-  background-color: var(--dp-b-v2) !important;
+  background-color: var(--bg-color) !important;
 }
 
 /* text correction underline on search box */
 html.dark .pR49Ae span {
   filter: invert(1);
+}
+
+/* dictionary */
+html.dark .dw-sb-cont .qjx3Xe {
+  background-color: var(--bg-color) !important;
+}
+/* dictionary selected item in menu */
+html.dark .gstl_51 .sbsb_d,
+html.dark .gstl_52 .sbsb_d {
+  background-color: var(--bg-color) !important;
 }
