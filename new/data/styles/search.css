@@ -25,10 +25,11 @@ html.dark .i8Msie {
   filter: invert(1);
 }
 
-html.dark div.ab_button,
-html.dark a.ab_button,
-html.dark a.ab_button:visited {
-  color: var(--front-dark-color) !important;
+html.dark .ab_button {
+  background-image: none;
+}
+html.dark .ab_button .qpOrC {
+  color: var(--front-light-color) !important;
 }
 
 /* score box */

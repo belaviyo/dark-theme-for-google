@@ -3,18 +3,18 @@
   https://www.google.com/
   https://www.google.de/?gws_rd=ssl
   https://www.google.com/webhp?hl=en
-  https://www.google.com/search?q=asdas
+  https://www.google.com/search?q=lifehacker
   https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=book&btnG=
   https://www.google.com/search?q=1%2B2
   https://www.google.co.uk/preferences?hl=en
   https://www.google.com/search?q=ooki
   https://www.google.com/search?bih=1307&biw=1632&hl=en&ei=yC8MYMqYD46qtQX_tJ7ICA&q=besiktas&oq=besiktas&gs_lcp=CgZwc3ktYWIQAzIJCAAQQxBGEP0BMgQIABBDMgUILhCxAzIFCC4QsQMyBAgAEEMyCAgAELEDEIMBMggIABCxAxCDATIICAAQsQMQgwEyAggAMgIIADoHCAAQsAMQQzoFCAAQkQI6AgguOggILhCxAxCDAToFCAAQsQM6CAguEMcBEKMCOgsILhCxAxDHARCjAjoHCC4QsQMQQzoOCC4QsQMQgwEQxwEQrwFQpNUBWMXjAWDm5AFoAnACeACAAe0CiAG3EJIBAzMtNpgBAKABAaoBB2d3cy13aXrIAQrAAQE&sclient=psy-ab&ved=0ahUKEwjKnOWgn7LuAhUOVa0KHX-aB4kQ4dUDCA0&uact=5
   https://translate.google.com/?sl=en&tl=es&text=This%0A&op=translate
-  https://www.google.com/search?hl=en&ei=eh8NYOq5BK6C9PwPoNGIwAo&q=timer&oq=timer&gs_lcp=CgZwc3ktYWIQAzIHCAAQsQMQQzIECAAQQzIHCAAQsQMQQzIECAAQQzIECC4QQzIECC4QQzIHCAAQsQMQQzIICC4QsQMQgwEyBAgAEEMyAggAOggIABCwAxCRAjoJCAAQsAMQBxAeOgUIABCwAzoICAAQsQMQsAM6BQgAELEDOggIABCxAxCDAToOCC4QsQMQgwEQxwEQowI6CwguELEDEMcBEKMCOgcILhCxAxBDUIETWLkWYKoXaAJwAHgAgAG9AogBlweSAQUyLTEuMpgBAKABAaoBB2d3cy13aXrIAQrAAQE&sclient=psy-ab&ved=0ahUKEwjq3rHsg7TuAhUuAZ0JHaAoAqgQ4dUDCA0&uact=5
-  https://www.google.com/search?biw=1240&bih=1307&ei=TCENYO2DAvGJ1fAPmNONkAk&q=color+picker&oq=color+picker&gs_lcp=CgZwc3ktYWIQAzIICAAQsQMQyQMyAggAMgIIADIFCAAQsQMyAggAMgIIADICCAAyAggAMgIIADICCAA6BwgAEEcQsAM6BQgAEJECOgQIABBDOgoIABCxAxCDARBDOggILhCxAxCDAToLCC4QsQMQxwEQowI6CAgAELEDEIMBOggIABDJAxCRAjoKCC4QsQMQgwEQQzoHCAAQsQMQQzoCCC46BwgAELEDEApQovMCWI-CA2DxggNoA3ACeACAAdUCiAG2FJIBBzAuNC42LjGYAQCgAQGqAQdnd3Mtd2l6yAEIwAEB&sclient=psy-ab&ved=0ahUKEwjt2cnKhbTuAhXxRBUIHZhpA5IQ4dUDCA0&uact=5
-  https://www.google.com/search?client=firefox-b-d&q=wert#dobs=ok
-  https://www.google.com/search?ei=CXQjYPPILcfbtAa35L7QCA&q=10btc+to+usd&oq=10btc+to+usd&gs_lcp=CgZwc3ktYWIQAzIECAAQCjIICAAQFhAKEB4yBQgAEIYDMgUIABCGAzIFCAAQhgMyBQgAEIYDOgoILhCwAxBDEJMCOgcIABCwAxBDOgcILhCwAxBDOgkIABCwAxAKEEM6CAguEJECEJMCOgUIABCRAjoOCC4QsQMQgwEQxwEQowI6CAgAELEDEIMBOgIILjoICC4QsQMQgwE6AggAOgUIABCxAzoICC4QxwEQowI6CQgAEAoQRhCCAjoHCAAQRhCCAlDlDljbKWDTKmgCcAJ4AIABjQOIAYUckgEFMi04LjSYAQCgAQGqAQdnd3Mtd2l6yAEKwAEB&sclient=psy-ab&ved=0ahUKEwiz8ebKz97uAhXHLc0KHTeyD4oQ4dUDCA0&uact=5
-  https://www.google.com/search?ei=cn4jYLiZIpDBUvWhotAF&q=book+infrench&oq=book+infrench&gs_lcp=CgZwc3ktYWIQAzIMCAAQsQMQQxBGEP8BMgQIABBDMgQIABBDMgQIABAKMgQIABAKMgQIABBDMgQIABAKMgQIABAKMgQIABAKMgQIABAKOgcIABBHELADOgUIABCRAjoICAAQsQMQgwE6CwguELEDEMcBEKMCOgcIABCxAxBDOgQILhBDOgUIABCxAzoICAAQsQMQyQM6CggAELEDEIMBEEM6DQgAELEDEJECEEYQ_wE6AggAOgIILlCsEVjzKGDsKWgEcAJ4AIABwwKIAaEbkgEGMi0xMS4zmAEAoAEBqgEHZ3dzLXdpesgBCMABAQ&sclient=psy-ab&ved=0ahUKEwi4mr7B2d7uAhWQoBQKHfWQCFoQ4dUDCA0&uact=5
+  https://www.google.com/search?q=timer
+  https://www.google.com/search?q=color picker
+  https://www.google.com/search?q=wert#dobs=ok
+  https://www.google.com/search?q=10 btc to usd
+  https://www.google.com/search?q=book in french
 */
 
 const DARK = 'dark';
@@ -133,12 +133,9 @@ class Observe {
     /* has important */
     const important = style.getPropertyPriority(property);
     /* fixed color */
-    if (str === 'black') {
-      return {r: 0, g: 0, b: 0, a: 1, replace: '%%', important};
-    }
-    if (str === 'white') {
-      return {r: 255, g: 255, b: 255, a: 1, replace: '%%', important};
-    }
+    str.replace('black', '#000000');
+    str.replace('white', '#ffffff');
+    str.replace('whitesmoke', '#f5f5f5');
     /* find replacing rule */
     let replace = '%%';
     if (str.startsWith('var')) { // var(--gm-neutraltextbutton-ink-color--stateful,rgb(233, 233, 233))

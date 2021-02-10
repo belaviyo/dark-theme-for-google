@@ -45,13 +45,14 @@ document.getElementById('schedule').addEventListener('change', e => {
 
 const defaults = {
   'bg-color': '#101111',
-  'bg-light-color': '#222324',
+  'bg-light-color': '#1d1e1f',
   'link-color': '#9bb6df',
   'visited-color': '#906f51',
   'link-header-color': '#6b886b',
-  'front-color': '#aaa6a2',
   'selection-color': '#eeeeee',
   'selection-bg': '#404040',
+  'front-color': '#aaa6a2',
+
   'custom-css': '',
   'day-time': '19:00',
   'night-time': '08:00',
