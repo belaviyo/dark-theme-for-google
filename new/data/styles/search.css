@@ -60,11 +60,13 @@ html.dark .XrZwB img {
 
 /* homepage buttons */
 html.dark .jhp input[type="submit"],
+html.dark .tfB0Bf input[type="submit"],
 html.dark .sbdd_a input,
 html.dark .gbqfba {
   background: none;
   background-color: var(--button-bg);
 }
+
 /* homepage google products icon */
 html.dark .gb_D.gb_sc {
   filter: invert(1);
@@ -109,4 +111,9 @@ html.dark .dw-sb-cont .qjx3Xe {
 html.dark .gstl_51 .sbsb_d,
 html.dark .gstl_52 .sbsb_d {
   background-color: var(--bg-color) !important;
+}
+
+/* search in site button */
+html.dark .U8shWc.Vy8nid img {
+  filter: invert(1);
 }

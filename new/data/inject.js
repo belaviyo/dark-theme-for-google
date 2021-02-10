@@ -1,7 +1,9 @@
 /*
   test pages:
   https://www.google.com/
+  https://www.google.de/?gws_rd=ssl
   https://www.google.com/webhp?hl=en
+  https://www.google.com/search?q=asdas
   https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=book&btnG=
   https://www.google.com/search?q=1%2B2
   https://www.google.co.uk/preferences?hl=en
@@ -11,6 +13,8 @@
   https://www.google.com/search?hl=en&ei=eh8NYOq5BK6C9PwPoNGIwAo&q=timer&oq=timer&gs_lcp=CgZwc3ktYWIQAzIHCAAQsQMQQzIECAAQQzIHCAAQsQMQQzIECAAQQzIECC4QQzIECC4QQzIHCAAQsQMQQzIICC4QsQMQgwEyBAgAEEMyAggAOggIABCwAxCRAjoJCAAQsAMQBxAeOgUIABCwAzoICAAQsQMQsAM6BQgAELEDOggIABCxAxCDAToOCC4QsQMQgwEQxwEQowI6CwguELEDEMcBEKMCOgcILhCxAxBDUIETWLkWYKoXaAJwAHgAgAG9AogBlweSAQUyLTEuMpgBAKABAaoBB2d3cy13aXrIAQrAAQE&sclient=psy-ab&ved=0ahUKEwjq3rHsg7TuAhUuAZ0JHaAoAqgQ4dUDCA0&uact=5
   https://www.google.com/search?biw=1240&bih=1307&ei=TCENYO2DAvGJ1fAPmNONkAk&q=color+picker&oq=color+picker&gs_lcp=CgZwc3ktYWIQAzIICAAQsQMQyQMyAggAMgIIADIFCAAQsQMyAggAMgIIADICCAAyAggAMgIIADICCAA6BwgAEEcQsAM6BQgAEJECOgQIABBDOgoIABCxAxCDARBDOggILhCxAxCDAToLCC4QsQMQxwEQowI6CAgAELEDEIMBOggIABDJAxCRAjoKCC4QsQMQgwEQQzoHCAAQsQMQQzoCCC46BwgAELEDEApQovMCWI-CA2DxggNoA3ACeACAAdUCiAG2FJIBBzAuNC42LjGYAQCgAQGqAQdnd3Mtd2l6yAEIwAEB&sclient=psy-ab&ved=0ahUKEwjt2cnKhbTuAhXxRBUIHZhpA5IQ4dUDCA0&uact=5
   https://www.google.com/search?client=firefox-b-d&q=wert#dobs=ok
+  https://www.google.com/search?ei=CXQjYPPILcfbtAa35L7QCA&q=10btc+to+usd&oq=10btc+to+usd&gs_lcp=CgZwc3ktYWIQAzIECAAQCjIICAAQFhAKEB4yBQgAEIYDMgUIABCGAzIFCAAQhgMyBQgAEIYDOgoILhCwAxBDEJMCOgcIABCwAxBDOgcILhCwAxBDOgkIABCwAxAKEEM6CAguEJECEJMCOgUIABCRAjoOCC4QsQMQgwEQxwEQowI6CAgAELEDEIMBOgIILjoICC4QsQMQgwE6AggAOgUIABCxAzoICC4QxwEQowI6CQgAEAoQRhCCAjoHCAAQRhCCAlDlDljbKWDTKmgCcAJ4AIABjQOIAYUckgEFMi04LjSYAQCgAQGqAQdnd3Mtd2l6yAEKwAEB&sclient=psy-ab&ved=0ahUKEwiz8ebKz97uAhXHLc0KHTeyD4oQ4dUDCA0&uact=5
+  https://www.google.com/search?ei=cn4jYLiZIpDBUvWhotAF&q=book+infrench&oq=book+infrench&gs_lcp=CgZwc3ktYWIQAzIMCAAQsQMQQxBGEP8BMgQIABBDMgQIABBDMgQIABAKMgQIABAKMgQIABBDMgQIABAKMgQIABAKMgQIABAKMgQIABAKOgcIABBHELADOgUIABCRAjoICAAQsQMQgwE6CwguELEDEMcBEKMCOgcIABCxAxBDOgQILhBDOgUIABCxAzoICAAQsQMQyQM6CggAELEDEIMBEEM6DQgAELEDEJECEEYQ_wE6AggAOgIILlCsEVjzKGDsKWgEcAJ4AIABwwKIAaEbkgEGMi0xMS4zmAEAoAEBqgEHZ3dzLXdpesgBCMABAQ&sclient=psy-ab&ved=0ahUKEwi4mr7B2d7uAhWQoBQKHfWQCFoQ4dUDCA0&uact=5
 */
 
 const DARK = 'dark';
@@ -19,15 +23,15 @@ const prefs = {
   'enabled': true,
 
   'bg-color': '#101111',
-  'bg-light-color': '#222324',
+  'bg-light-color': '#1d1e1f',
   'link-color': '#9bb6df',
   'visited-color': '#906f51',
   'link-header-color': '#6b886b',
-  'front-color': '#aaa6a2',
   'selection-color': '#eeeeee',
   'selection-bg': '#404040',
   'button-bg': '#1a73e8',
-  'front-light-color': '#e7e2dc',
+  'front-color': '#aaa6a2',
+  'front-light-color': '#ddd8d2',
   'front-dark-color': '#1e2022',
   'box-shadow-color': '#37383b',
   'border-light-color': '#35383b',
@@ -123,13 +127,17 @@ class Observe {
       this.remote(sheet);
     }
   }
-  parse(str) {
-    str = str.toLowerCase();
+  parse(style, property) {
+    let str = style[property].toLowerCase();
+
+    /* has important */
+    const important = style.getPropertyPriority(property);
+    /* fixed color */
     if (str === 'black') {
-      return {r: 0, g: 0, b: 0, a: 1, replace: '%%'};
+      return {r: 0, g: 0, b: 0, a: 1, replace: '%%', important};
     }
     if (str === 'white') {
-      return {r: 255, g: 255, b: 255, a: 1, replace: '%%'};
+      return {r: 255, g: 255, b: 255, a: 1, replace: '%%', important};
     }
     /* find replacing rule */
     let replace = '%%';
@@ -148,14 +156,15 @@ class Observe {
         str = '#' + str.split('#')[1];
       }
     }
-    if (str[0] === '#' && str.indexOf(' ') !== -1) { // #168aff transparent
-      replace = '%% ' + str.split(' ')[1];
+    else if (str[0] === '#') { // #168aff transparent or #f0f0f0!important
+      replace = str.replace(/^#\w+/, '%%');
     }
-    if (str.startsWith('rgb') && str.indexOf(') ') !== -1) { // rgba(123, 123, 123, 0.5) transparent
-      replace = '%% ' + str.split(') ');
+    else if (str.startsWith('rgb')) { // rgba(123, 123, 123, 0.5) transparent
+      replace = str.replace(/rgba?\([^)]+\)/, '%%');
     }
     // not a valid rgb or hex color
     if (str[0] !== 'r' && str[0] !== '#') {
+      // console.log('skipping', str);
       return;
     }
     if (str.startsWith('rgb')) {
@@ -166,7 +175,8 @@ class Observe {
           g: parseInt(r[2]),
           b: parseInt(r[3]),
           a: parseInt(r[4] || 1),
-          replace
+          replace,
+          important
         };
       }
     }
@@ -177,12 +187,13 @@ class Observe {
         g: parseInt(r[2], 16),
         b: parseInt(r[3], 16),
         a: 1,
-        replace
+        replace,
+        important
       };
     }
   }
   color(rule) {
-    const o = this.parse(rule.style.color);
+    const o = this.parse(rule.style, 'color');
     const convert = ({r, g, b}) => {
       // red
       if ((r - g) > 50 && (b - g) > 50) {
@@ -196,18 +207,23 @@ class Observe {
       else if ((g - b) > 50 && (g - r) > 50) {
         return 'var(--link-header-color)';
       }
-      if (o.r > 60 && o.g > 60 && o.b > 60) {
+      // if color was white; keep the bright color (e.g. calculator buttons)
+      else if (o.r === 255 && o.g === 255 && o.b === 255) {
+        return 'var(--front-light-color)';
+      }
+      // default
+      else if (o.r > 60 && o.g > 60 && o.b > 60) {
         return 'var(--front-color)';
       }
       return 'var(--front-light-color)';
     };
 
     if (o) {
-      rule.style.color = convert(o);
+      rule.style.setProperty('color', convert(o), o.important);
     }
   }
   'background-color'(rule) {
-    const o = this.parse(rule.style['background-color']);
+    const o = this.parse(rule.style, 'background-color');
     const convert = ({r, g, b, replace}) => {
       // blue
       if ((b - g) > 50 && (b - r) > 50) {
@@ -217,7 +233,7 @@ class Observe {
     };
     if (o) {
       if (o.a > 0.5) {
-        rule.style['background-color'] = convert(o);
+        rule.style.setProperty('background-color', convert(o), o.important);
       }
     }
   }
@@ -230,46 +246,14 @@ class Observe {
       return replace.replace('%%', 'var(--border-light-color)');
     };
 
-    if (rule.style['border-top-color']) {
-      const o = this.parse(rule.style['border-top-color']);
-      if (o) {
-        rule.style['border-top-color'] = convert(o);
-      }
-    }
-    if (rule.style['border-bottom-color']) {
-      const o = this.parse(rule.style['border-bottom-color']);
-      if (o) {
-        rule.style['border-bottom-color'] = convert(o);
-      }
-    }
-    if (rule.style['border-left-color']) {
-      const o = this.parse(rule.style['border-left-color']);
-      if (o) {
-        rule.style['border-left-color'] = convert(o);
-      }
-    }
-    if (rule.style['border-right-color']) {
-      const o = this.parse(rule.style['border-right-color']);
-      if (o) {
-        rule.style['border-right-color'] = convert(o);
-      }
-    }
-    if (rule.style['border-color']) {
-      const o = this.parse(rule.style['border-color']);
-      if (o) {
-        rule.style['border-color'] = convert(o);
-      }
-    }
-    if (rule.style.stroke) {
-      const o = this.parse(rule.style.stroke);
-      if (o) {
-        rule.style.stroke = convert(o);
-      }
-    }
-    if (rule.style.fill) {
-      const o = this.parse(rule.style.fill);
-      if (o) {
-        rule.style.fill = convert(o);
+    const properties = ['border-top-color', 'border-bottom-color', 'border-left-color', 'border-right-color',
+      'border-color', 'stroke', 'fill'];
+    for (const property of properties) {
+      if (rule.style[property]) {
+        const o = this.parse(rule.style, property);
+        if (o) {
+          rule.style.setProperty(property, convert(o), o.important);
+        }
       }
     }
   }
@@ -313,6 +297,7 @@ const observe = new Observe();
         const n = node.cloneNode(true);
         n.classList.add(DARK);
         n.removeAttribute('nonce');
+        n.removeAttribute('id');
         node.after(n);
       }
       observe.check();
@@ -370,6 +355,7 @@ const observe = new Observe();
 
 // custom styling
 const css = document.createElement('style');
+css.classList.add(DARK);
 document.documentElement.appendChild(css);
 
 /* update */
