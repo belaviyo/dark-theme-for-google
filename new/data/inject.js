@@ -52,6 +52,11 @@ const prefs = {
   'exclude-scholar': false
 };
 
+// custom styling
+const css = document.createElement('style');
+css.classList.add(DARK);
+document.documentElement.appendChild(css);
+
 const style = document.documentElement.style;
 const root = () => {
   style.setProperty('--bg-color', prefs['bg-color']);
@@ -85,7 +90,9 @@ class Observe {
       const node = sheet.ownerNode;
       if (node.tagName === 'STYLE' && node.classList.contains(DARK)) {
         this.cache.set(sheet, true);
-        this.clean(sheet);
+        if (node !== css) {
+          this.clean(sheet);
+        }
       }
       else if (node.tagName === 'LINK') {
         this.cache.set(sheet, true);
@@ -349,11 +356,6 @@ const observe = new Observe();
     characterData: true
   });
 }
-
-// custom styling
-const css = document.createElement('style');
-css.classList.add(DARK);
-document.documentElement.appendChild(css);
 
 /* update */
 const update = () => {
