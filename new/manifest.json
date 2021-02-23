@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "0.4.5",
+  "version": "0.4.6",
   "name": "Dark Theme for Google™",
   "description": "__MSG_app_description__",
   "default_locale": "en",
@@ -51,6 +51,13 @@
       "*://scholar.google.*/*"
     ],
     "css": ["data/styles/scholar.css"],
+    "run_at": "document_start"
+  }, {
+    "matches": ["*://*/*"],
+    "include_globs": [
+      "*://www.google.*/doodles"
+    ],
+    "css": ["data/styles/doodles.css"],
     "run_at": "document_start"
   }, {
     "matches": ["*://*/*"],

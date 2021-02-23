@@ -1,0 +1,9 @@
+html.dark #homepage #content {
+  background: none;
+}
+html.dark #latest .bracket {
+  background: none;
+}
+html.dark #lang-chooser {
+  color: var(--front-color);
+}

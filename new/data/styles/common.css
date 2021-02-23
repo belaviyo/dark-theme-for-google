@@ -21,3 +21,8 @@ html.dark header {
 html.dark #gb a.gb_4.gb_4 {
   color: var(--front-light-color);
 }
+
+html.dark iframe[src^="//consent.google.com"],
+html.dark iframe[src^="https://consent.google.com"] {
+  background-color: var(--fix-light-color);
+}

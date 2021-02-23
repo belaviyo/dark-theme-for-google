@@ -15,6 +15,7 @@
   https://www.google.com/search?q=wert#dobs=ok
   https://www.google.com/search?q=10 btc to usd
   https://www.google.com/search?q=book in french
+  https://www.google.com/doodles
 */
 
 const DARK = 'dark';
@@ -73,6 +74,7 @@ const root = () => {
   style.setProperty('--box-shadow-color', prefs['box-shadow-color']);
   style.setProperty('--border-light-color', prefs['border-light-color']);
   style.setProperty('--border-blue-color', prefs['border-blue-color']);
+  style.setProperty('--fix-light-color', '#fff');
 };
 root();
 document.documentElement.classList.add(DARK);
@@ -94,7 +96,7 @@ class Observe {
           this.clean(sheet);
         }
       }
-      else if (node.tagName === 'LINK') {
+      else if (node.tagName === 'LINK' && node.classList.contains(DARK)) {
         this.cache.set(sheet, true);
         this.clean(sheet);
       }
@@ -140,9 +142,9 @@ class Observe {
     /* has important */
     const important = style.getPropertyPriority(property);
     /* fixed color */
-    str.replace('black', '#000000');
-    str.replace('white', '#ffffff');
-    str.replace('whitesmoke', '#f5f5f5');
+    str = str.replace('black', '#000000');
+    str = str.replace('white', '#ffffff');
+    str = str.replace('whitesmoke', '#f5f5f5');
     /* find replacing rule */
     let replace = '%%';
     if (str.startsWith('var')) { // var(--gm-neutraltextbutton-ink-color--stateful,rgb(233, 233, 233))
@@ -178,7 +180,7 @@ class Observe {
           r: parseInt(r[1]),
           g: parseInt(r[2]),
           b: parseInt(r[3]),
-          a: parseInt(r[4] || 1),
+          a: parseFloat(r[4] || 1),
           replace,
           important
         };
@@ -228,6 +230,9 @@ class Observe {
   }
   'background-color'(rule) {
     const o = this.parse(rule.style, 'background-color');
+    console.log(o, rule.style['background-color']);
+
+
     const convert = ({r, g, b, replace}) => {
       // blue
       if ((b - g) > 50 && (b - r) > 50) {
@@ -295,14 +300,19 @@ class Observe {
 
 const observe = new Observe();
 {
+  const one = node => {
+    const n = node.cloneNode(true);
+    n.classList.add(DARK);
+    n.removeAttribute('nonce');
+    n.removeAttribute('id');
+    node.after(n);
+
+    return n;
+  };
   const dup = nodes => {
     if (nodes.size) {
       for (const node of nodes.values()) {
-        const n = node.cloneNode(true);
-        n.classList.add(DARK);
-        n.removeAttribute('nonce');
-        n.removeAttribute('id');
-        node.after(n);
+        one(node);
       }
       observe.check();
     }
@@ -321,8 +331,9 @@ const observe = new Observe();
           }
         }
         else if (node.nodeType === Node.ELEMENT_NODE) {
-          if (node.tagName === 'LINK' && node.rel === 'stylesheet') {
-            node.addEventListener('load', () => observe.check());
+          if (node.tagName === 'LINK' && node.rel === 'stylesheet' && node.classList.contains(DARK) === false) {
+            // in case the clean works on the remote, make sure to have a copy
+            one(node).addEventListener('load', () => observe.check());
           }
           if (node.tagName === 'STYLE') {
             if (node.classList.contains(DARK) === false && node.textContent) {
