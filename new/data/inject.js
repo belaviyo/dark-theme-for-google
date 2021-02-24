@@ -16,6 +16,7 @@
   https://www.google.com/search?q=10 btc to usd
   https://www.google.com/search?q=book in french
   https://www.google.com/doodles
+  https://www.google.com/docs/about/
 */
 
 const DARK = 'dark';
@@ -121,16 +122,25 @@ class Observe {
           this.border(rule);
         }
       };
-      for (const rule of sheet.rules) {
-        if (rule.style) {
-          check(rule);
-        }
-        else if (rule.cssRules) {
-          for (const r of rule.cssRules) {
-            check(r);
+      const parse = sheet => {
+        for (const rule of sheet.rules) {
+          if (rule.styleSheet) {
+            try {
+              parse(rule.styleSheet);
+            }
+            catch (e) {}
+          }
+          if (rule.style) {
+            check(rule);
+          }
+          else if (rule.cssRules) {
+            for (const r of rule.cssRules) {
+              check(r);
+            }
           }
         }
-      }
+      };
+      parse(sheet);
     }
     catch (e) {
       this.remote(sheet);
@@ -230,8 +240,7 @@ class Observe {
   }
   'background-color'(rule) {
     const o = this.parse(rule.style, 'background-color');
-    console.log(o, rule.style['background-color']);
-
+    // console.log(o, rule.style['background-color']);
 
     const convert = ({r, g, b, replace}) => {
       // blue
