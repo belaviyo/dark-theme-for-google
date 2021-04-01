@@ -21,7 +21,8 @@
       "*://encrypted.google.*/*",
       "*://accounts.google.*/*",
       "*://myaccount.google.*/*",
-      "*://translate.google.*/*"
+      "*://translate.google.*/*",
+      "*://photos.google.*/*"
     ],
     "exclude_globs": [
       "*://www.google.*/recaptcha/*",
