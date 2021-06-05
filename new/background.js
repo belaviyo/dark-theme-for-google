@@ -1,5 +1,31 @@
 'use strict';
 
+// System Color Preference
+const scheme = matches => {
+  chrome.storage.local.get({
+    enabled: true,
+    mode: 'user'
+  }, prefs => {
+    if (prefs.mode === 'system') {
+      if (prefs.enabled && matches === false) {
+        chrome.storage.local.set({
+          enabled: false
+        });
+      }
+      if (prefs.enabled === false && matches) {
+        chrome.storage.local.set({
+          enabled: true
+        });
+      }
+    }
+  });
+};
+
+try {
+  matchMedia('(prefers-color-scheme: dark)').addListener(e => scheme(e.matches));
+}
+catch (e) {}
+
 chrome.runtime.onMessage.addListener((request, sender, response) => {
   if (request.method === 'excluded') {
     chrome.browserAction.setTitle({
@@ -12,6 +38,9 @@ chrome.runtime.onMessage.addListener((request, sender, response) => {
       console.warn('cannot fetch', request.href, e.message);
     });
     return true;
+  }
+  else if (request.method === 'prefers-color-scheme') {
+    scheme(request.matches);
   }
 });
 
@@ -77,6 +106,9 @@ chrome.storage.onChanged.addListener(prefs => {
   }
   if (prefs.enabled) {
     update(prefs.enabled.newValue ? '/' : '/disabled/', prefs.enabled.newValue ? 'enabled' : 'disabled');
+  }
+  if (prefs.mode && prefs.mode.newValue === 'system') {
+    scheme(matchMedia('(prefers-color-scheme: dark)').matches);
   }
 });
 

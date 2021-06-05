@@ -17,9 +17,11 @@
   https://www.google.com/search?q=book in french
   https://www.google.com/doodles
   https://www.google.com/docs/about/
+  https://photos.google.com/?pli=1
 */
 
 const DARK = 'dark';
+const isFirefox = /Firefox/.test(navigator.userAgent) || typeof InstallTrigger !== 'undefined';
 
 const prefs = {
   'enabled': true,
@@ -446,3 +448,17 @@ chrome.storage.onChanged.addListener(ps => {
   }
   update();
 });
+
+// TO-DO - remove when matchMedia is supported in bg page
+if (window.top === window && isFirefox === false) {
+  const m = matchMedia('(prefers-color-scheme: dark)');
+  m.addListener(e => chrome.runtime.sendMessage({
+    method: 'prefers-color-scheme',
+    matches: e.matches
+  }));
+  chrome.runtime.sendMessage({
+    method: 'prefers-color-scheme',
+    matches: m.matches
+  });
+}
+

@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "0.4.7",
+  "version": "0.4.9",
   "name": "Dark Theme for Google™",
   "description": "__MSG_app_description__",
   "default_locale": "en",
@@ -22,7 +22,8 @@
       "*://accounts.google.*/*",
       "*://myaccount.google.*/*",
       "*://translate.google.*/*",
-      "*://photos.google.*/*"
+      "*://photos.google.*/*",
+      "*://support.google.com/*"
     ],
     "exclude_globs": [
       "*://www.google.*/recaptcha/*",
@@ -89,7 +90,8 @@
   "homepage_url": "https://add0n.com/dark-theme.html?from=google",
   "options_ui": {
     "page": "data/options/index.html",
-    "chrome_style": true
+    "chrome_style": true,
+    "open_in_tab": true
   },
   "browser_action": {}
 }

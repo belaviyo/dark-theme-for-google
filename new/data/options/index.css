@@ -1,9 +1,11 @@
+body {
+  max-width: 80%;
+  margin: 10px auto;
+}
 @supports (-moz-appearance:none) {
   body {
     font-size: 13px;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    margin: 10px;
-    min-width: unset;
   }
   textarea {
     padding: 5px;
@@ -23,6 +25,13 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  body {
+    margin: 10px;
+    max-width: unset;
+  }
+}
+
 td:last-child {
   text-align: right;
 }
@@ -39,4 +48,7 @@ tr:nth-child(even) {
 label {
   padding: 5px 0;
   display: block;
+}
+td:first-child {
+  text-indent: 5px;
 }

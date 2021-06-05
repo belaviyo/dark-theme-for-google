@@ -19,6 +19,7 @@ function save() {
     'day-time': document.getElementById('day-time').value,
     'night-time': document.getElementById('night-time').value,
     'schedule': document.getElementById('schedule').checked,
+    'mode': document.getElementById('scheme').checked ? 'system' : 'user',
     'faqs': document.getElementById('faqs').checked,
     'exclude-images': document.getElementById('exclude-images').checked,
     'exclude-photos': document.getElementById('exclude-photos').checked,
@@ -57,6 +58,7 @@ const defaults = {
   'day-time': '19:00',
   'night-time': '08:00',
   'schedule': false,
+  'mode': 'user',
   'faqs': true,
   'exclude-images': false,
   'exclude-photos': false,
@@ -75,11 +77,16 @@ const defaults = {
 function restore() {
   chrome.storage.local.get(defaults, prefs => {
     Object.keys(prefs).forEach(pref => {
-      console.log(pref);
-      const e = document.getElementById(pref);
-      e[e.type === 'checkbox' ? 'checked' : 'value'] = prefs[pref];
+      if (pref === 'mode') {
+        document.getElementById('scheme').checked = prefs.mode === 'system';
+      }
+      else {
+        const e = document.getElementById(pref);
+        e[e.type === 'checkbox' ? 'checked' : 'value'] = prefs[pref];
+      }
     });
     document.getElementById('schedule').dispatchEvent(new Event('change'));
+    document.getElementById('scheme').dispatchEvent(new Event('change'));
   });
 }
 document.addEventListener('DOMContentLoaded', restore);
@@ -89,12 +96,31 @@ document.addEventListener('submit', e => {
 });
 document.getElementById('reset').addEventListener('click', () => {
   Object.entries(defaults).forEach(([key, value]) => {
-    document.getElementById(key)[key === 'schedule' || key === 'faqs' ? 'checked' : 'value'] = value;
+    if (key === 'schedule' || key === 'scheme' || key === 'faqs') {
+      document.getElementById(key).checked = value;
+    }
+    else {
+      document.getElementById(key).value = value;
+    }
   });
   document.getElementById('schedule').dispatchEvent(new Event('change'));
+  document.getElementById('scheme').dispatchEvent(new Event('change'));
   save();
 });
 // support
 document.getElementById('support').addEventListener('click', () => chrome.tabs.create({
   url: chrome.runtime.getManifest().homepage_url + '&rd=donate'
 }));
+
+document.getElementById('scheme').addEventListener('change', e => {
+  document.getElementById('state-scheme').textContent = chrome.i18n.getMessage('options_' + (e.target.checked ? 'enabled' : 'disabled'));
+  if (e.target.checked) {
+    if (document.getElementById('schedule').checked) {
+      document.getElementById('schedule').click();
+    }
+    document.getElementById('schedule').disabled = true;
+  }
+  else {
+    document.getElementById('schedule').disabled = false;
+  }
+});

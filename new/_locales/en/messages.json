@@ -35,6 +35,9 @@
   "options_selection_bg": {
     "message": "Selection background color"
   },
+  "options_scheme_title": {
+    "message": "Follow system's color preference"
+  },
   "options_schedule_title": {
     "message": "Turn on as scheduled"
   },

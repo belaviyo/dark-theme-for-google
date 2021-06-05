@@ -42,10 +42,16 @@
         <td><input type="color" id="selection-bg"></td>
       </tr>
       <tr>
+        <td data-i18n="options_scheme_title"></td>
+        <td>
+          <label style="padding: 5px 0; display: flex; align-items: center;"><input type="checkbox" id="scheme">&nbsp;<span id="state-scheme"></span></label>
+        </td>
+      </tr>
+      <tr>
         <td data-i18n="options_schedule_title"></td>
         <td>
           <div style="display: flex; flex-direction: column; align-items: flex-start">
-            <label style="padding: 5px 0; display: flex"><input type="checkbox" id="schedule">&nbsp;<span id="state"></span></label>
+            <label style="padding: 5px 0; display: flex; align-items: center;"><input type="checkbox" id="schedule">&nbsp;<span id="state"></span></label>
             <div>
               <input type="time" id="day-time" required> - <input type="time" id="night-time" required>
             </div>
