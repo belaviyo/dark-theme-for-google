@@ -25,6 +25,7 @@
       "*://photos.google.*/*",
       "*://support.google.com/*",
       "*://messages.google.com/*",
+      "*://calendar.google.com/*",
       "http://127.0.0.1:8000/"
     ],
     "exclude_globs": [
@@ -55,6 +56,13 @@
       "*://scholar.google.*/*"
     ],
     "css": ["data/styles/scholar.css"],
+    "run_at": "document_start"
+  }, {
+    "matches": ["*://*/*"],
+    "include_globs": [
+      "*://calendar.google.*/*"
+    ],
+    "css": ["data/styles/calendar.css"],
     "run_at": "document_start"
   }, {
     "matches": ["*://*/*"],

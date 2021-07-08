@@ -18,6 +18,7 @@
   https://www.google.com/doodles
   https://www.google.com/docs/about/
   https://photos.google.com/?pli=1
+  https://messages.google.com/web/conversations
 */
 
 const DARK = 'dark';
@@ -28,6 +29,7 @@ const prefs = {
 
   'bg-color': '#101111',
   'bg-light-color': '#1d1e1f',
+  'bg-red-color': '#ea4335',
   'link-color': '#9bb6df',
   'visited-color': '#906f51',
   'link-header-color': '#6b886b',
@@ -40,6 +42,7 @@ const prefs = {
   'box-shadow-color': '#37383b',
   'border-light-color': '#35383b',
   'border-blue-color': '#80a5de',
+  'border-red-color': '#ea4335',
 
   'custom-css': '',
   'exclude-images': false,
@@ -68,6 +71,7 @@ const style = document.documentElement.style;
 const root = () => {
   style.setProperty('--bg-color', prefs['bg-color']);
   style.setProperty('--bg-light-color', prefs['bg-light-color']);
+  style.setProperty('--bg-red-color', prefs['bg-red-color']);
   style.setProperty('--link-color', prefs['link-color']);
   style.setProperty('--visited-color', prefs['visited-color']);
   style.setProperty('--link-header-color', prefs['link-header-color']);
@@ -80,6 +84,7 @@ const root = () => {
   style.setProperty('--box-shadow-color', prefs['box-shadow-color']);
   style.setProperty('--border-light-color', prefs['border-light-color']);
   style.setProperty('--border-blue-color', prefs['border-blue-color']);
+  style.setProperty('--border-red-color', prefs['border-red-color']);
   style.setProperty('--fix-light-color', '#fff');
 };
 root();
@@ -156,10 +161,12 @@ class Observe {
     // only replace unloaded or unknown vars in the places that we have checked
     sub = replaceVars ? sub : undefined;
 
+    /* dealing with loaded vars */
     str = str.replace(/var\(([^)]*)\)/g, (a, b) => {
       const [v, d] = b.split(/\s*,\s*/);
       return getComputedStyle(document.body).getPropertyValue(v) || d || sub || a;
     }).trim();
+
     /* has important */
     const important = style.getPropertyPriority(property);
     /* fixed color */
@@ -260,6 +267,10 @@ class Observe {
       if ((b - g) > 50 && (b - r) > 50) {
         return replace.replace('%%', 'var(--button-bg)');
       }
+      // red
+      else if ((r - g) > 50 && (r - b) > 50) {
+        return 'var(--bg-red-color)';
+      }
       return replace.replace('%%', 'var(--bg-light-color)');
     };
     if (o) {
@@ -273,6 +284,10 @@ class Observe {
       // blue
       if ((b - g) > 50 && (b - r) > 50) {
         return replace.replace('%%', 'var(--border-blue-color)');
+      }
+      // red
+      else if ((r - g) > 50 && (r - b) > 50) {
+        return replace.replace('%%', 'var(--border-red-color)');
       }
       return replace.replace('%%', 'var(--border-light-color)');
     };
