@@ -53,8 +53,11 @@ const prefs = {
   'exclude-recipes': false,
   'exclude-shopping': false,
   'exclude-video': false,
-  'exclude-scholar': false
+  'exclude-scholar': false,
+  'exclude-messages': false
 };
+
+const replaceVars = location.hostname === 'messages.google.com';
 
 // custom styling
 const css = document.createElement('style');
@@ -148,9 +151,15 @@ class Observe {
       this.remote(sheet);
     }
   }
-  parse(style, property) {
+  parse(style, property, sub) {
     let str = style[property].toLowerCase();
+    // only replace unloaded or unknown vars in the places that we have checked
+    sub = replaceVars ? sub : undefined;
 
+    str = str.replace(/var\(([^)]*)\)/g, (a, b) => {
+      const [v, d] = b.split(/\s*,\s*/);
+      return getComputedStyle(document.body).getPropertyValue(v) || d || sub || a;
+    }).trim();
     /* has important */
     const important = style.getPropertyPriority(property);
     /* fixed color */
@@ -198,7 +207,9 @@ class Observe {
         };
       }
     }
-    const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})/i.exec(str);
+    const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})/i.exec(str) ||
+      /^#?([a-f\d]{1})([a-f\d]{1})([a-f\d]{1})/i.exec(str);
+
     if (r) {
       return {
         r: parseInt(r[1], 16),
@@ -211,7 +222,7 @@ class Observe {
     }
   }
   color(rule) {
-    const o = this.parse(rule.style, 'color');
+    const o = this.parse(rule.style, 'color', '#000');
     const convert = ({r, g, b}) => {
       // red
       if ((r - g) > 50 && (b - g) > 50) {
@@ -241,7 +252,7 @@ class Observe {
     }
   }
   'background-color'(rule) {
-    const o = this.parse(rule.style, 'background-color');
+    const o = this.parse(rule.style, 'background-color', '#fff');
     // console.log(o, rule.style['background-color']);
 
     const convert = ({r, g, b, replace}) => {
@@ -270,7 +281,7 @@ class Observe {
       'border-color', 'stroke', 'fill'];
     for (const property of properties) {
       if (rule.style[property]) {
-        const o = this.parse(rule.style, property);
+        const o = this.parse(rule.style, property, '#000');
         if (o) {
           rule.style.setProperty(property, convert(o), o.important);
         }
@@ -390,6 +401,9 @@ const update = () => {
     }
   }
   if (prefs['exclude-translate'] === true && location.hostname.startsWith('translate.google.')) {
+    observe.exclude();
+  }
+  if (prefs['exclude-messages'] === true && location.hostname.startsWith('messages.google.')) {
     observe.exclude();
   }
   if (prefs['exclude-scholar'] === true && location.hostname === 'scholar.google.com') {

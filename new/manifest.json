@@ -23,7 +23,9 @@
       "*://myaccount.google.*/*",
       "*://translate.google.*/*",
       "*://photos.google.*/*",
-      "*://support.google.com/*"
+      "*://support.google.com/*",
+      "*://messages.google.com/*",
+      "http://127.0.0.1:8000/"
     ],
     "exclude_globs": [
       "*://www.google.*/recaptcha/*",
@@ -53,6 +55,13 @@
       "*://scholar.google.*/*"
     ],
     "css": ["data/styles/scholar.css"],
+    "run_at": "document_start"
+  }, {
+    "matches": ["*://*/*"],
+    "include_globs": [
+      "*://messages.google.*/*"
+    ],
+    "css": ["data/styles/messages.css"],
     "run_at": "document_start"
   }, {
     "matches": ["*://*/*"],

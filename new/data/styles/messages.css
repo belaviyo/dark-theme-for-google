@@ -1,0 +1,3 @@
+html.dark mws-message-compose .input-background {
+  background: var(--bg-light-color) !important;
+}

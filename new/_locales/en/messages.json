@@ -97,5 +97,8 @@
   },
   "options_exclude_scholar": {
     "message": "Exclude \"Google Scholar\""
+  },
+  "options_exclude_messages": {
+    "message": "Exclude \"Messages for web\""
   }
 }
