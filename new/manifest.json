@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "0.4.9",
+  "version": "0.5.0",
   "name": "Dark Theme for Google™",
   "description": "__MSG_app_description__",
   "default_locale": "en",
@@ -25,8 +25,7 @@
       "*://photos.google.*/*",
       "*://support.google.com/*",
       "*://messages.google.com/*",
-      "*://calendar.google.com/*",
-      "http://127.0.0.1:8000/"
+      "*://calendar.google.com/*"
     ],
     "exclude_globs": [
       "*://www.google.*/recaptcha/*",

@@ -100,5 +100,8 @@
   },
   "options_exclude_messages": {
     "message": "Exclude \"Messages for web\""
+  },
+  "options_exclude_calendar": {
+    "message": "Exclude \"Google Calendar\""
   }
 }

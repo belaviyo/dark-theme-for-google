@@ -19,6 +19,7 @@
   https://www.google.com/docs/about/
   https://photos.google.com/?pli=1
   https://messages.google.com/web/conversations
+  https://calendar.google.com/calendar/u/0/r
 */
 
 const DARK = 'dark';
@@ -57,7 +58,8 @@ const prefs = {
   'exclude-shopping': false,
   'exclude-video': false,
   'exclude-scholar': false,
-  'exclude-messages': false
+  'exclude-messages': false,
+  'exclude-calendar': false
 };
 
 const replaceVars = location.hostname === 'messages.google.com';
@@ -161,10 +163,19 @@ class Observe {
     // only replace unloaded or unknown vars in the places that we have checked
     sub = replaceVars ? sub : undefined;
 
-    /* dealing with loaded vars */
-    str = str.replace(/var\(([^)]*)\)/g, (a, b) => {
-      const [v, d] = b.split(/\s*,\s*/);
-      return getComputedStyle(document.body).getPropertyValue(v) || d || sub || a;
+    /* dealing with loaded vars:
+      var(--mdc-ripple-color,rgba(255,255,255,0.87))
+      var(--mdc-ripple-color,#bb86fc)
+    */
+    str = str.replace(/var\(([^;]*)\)/g, (a, b) => {
+      try {
+        const [v, d] = b.split(/(?<!,),/).map(s => s.trim());
+        const r = getComputedStyle(document.body).getPropertyValue(v) || d || sub || a;
+        return r;
+      }
+      catch (e) {
+        return a;
+      }
     }).trim();
 
     /* has important */
@@ -419,6 +430,9 @@ const update = () => {
     observe.exclude();
   }
   if (prefs['exclude-messages'] === true && location.hostname.startsWith('messages.google.')) {
+    observe.exclude();
+  }
+  if (prefs['exclude-calendar'] === true && location.hostname.startsWith('calendar.google.')) {
     observe.exclude();
   }
   if (prefs['exclude-scholar'] === true && location.hostname === 'scholar.google.com') {

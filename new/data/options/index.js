@@ -33,7 +33,8 @@ function save() {
     'exclude-shopping': document.getElementById('exclude-shopping').checked,
     'exclude-video': document.getElementById('exclude-video').checked,
     'exclude-scholar': document.getElementById('exclude-scholar').checked,
-    'exclude-messages': document.getElementById('exclude-messages').checked
+    'exclude-messages': document.getElementById('exclude-messages').checked,
+    'exclude-calendar': document.getElementById('exclude-calendar').checked
   }, () => {
     const status = document.getElementById('status');
     status.textContent = chrome.i18n.getMessage('options_saved');
@@ -73,7 +74,8 @@ const defaults = {
   'exclude-shopping': false,
   'exclude-video': false,
   'exclude-scholar': false,
-  'exclude-messages': false
+  'exclude-messages': false,
+  'exclude-calendar': false
 };
 
 function restore() {
