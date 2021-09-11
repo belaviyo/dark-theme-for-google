@@ -3,7 +3,7 @@ html.dark .TbwUpd * {
   color: var(--link-header-color);
 }
 
-/* search box*/
+/* search box */
 html.dark div.RNNXgb:hover {
   box-shadow: none;
 }
@@ -11,6 +11,11 @@ html.dark div.aajZCb {
   box-shadow: none;
   border: solid 1px var(--border-light-color);
   border-top: none;
+}
+
+/* remove box shadow */
+html.dark .Q3DXx {
+  box-shadow: none;
 }
 
 /* sticky header */

@@ -62,6 +62,9 @@
   "options_disabled": {
     "message": "Disabled"
   },
+  "options_exclude_search": {
+    "message": "Exclude \"Google Search\""
+  },
   "options_exclude_images": {
     "message": "Exclude \"Google Images\""
   },

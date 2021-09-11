@@ -31,6 +31,7 @@ const prefs = {
   'bg-color': '#101111',
   'bg-light-color': '#1d1e1f',
   'bg-red-color': '#ea4335',
+  'bg-blue-color': '#253650',
   'link-color': '#9bb6df',
   'visited-color': '#906f51',
   'link-header-color': '#6b886b',
@@ -46,6 +47,7 @@ const prefs = {
   'border-red-color': '#ea4335',
 
   'custom-css': '',
+  'exclude-search': false,
   'exclude-images': false,
   'exclude-photos': false,
   'exclude-translate': false,
@@ -72,6 +74,7 @@ document.documentElement.appendChild(css);
 const style = document.documentElement.style;
 const root = () => {
   style.setProperty('--bg-color', prefs['bg-color']);
+  style.setProperty('--bg-blue-color', prefs['bg-blue-color']);
   style.setProperty('--bg-light-color', prefs['bg-light-color']);
   style.setProperty('--bg-red-color', prefs['bg-red-color']);
   style.setProperty('--link-color', prefs['link-color']);
@@ -278,6 +281,10 @@ class Observe {
       if ((b - g) > 50 && (b - r) > 50) {
         return replace.replace('%%', 'var(--button-bg)');
       }
+      // Light blue
+      else if (b > 250 && (b - g) > 20 && (b - r) > 20) {
+        return replace.replace('%%', 'var(--bg-blue-color)');
+      }
       // red
       else if ((r - g) > 50 && (r - b) > 50) {
         return 'var(--bg-red-color)';
@@ -425,6 +432,9 @@ const update = () => {
     if (observe.enabled === false && prefs.enabled) {
       observe.toggle();
     }
+  }
+  if (prefs['exclude-search'] === true && location.pathname === '/search') {
+    observe.exclude();
   }
   if (prefs['exclude-translate'] === true && location.hostname.startsWith('translate.google.')) {
     observe.exclude();
