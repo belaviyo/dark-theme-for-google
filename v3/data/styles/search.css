@@ -1,0 +1,125 @@
+/* search href */
+html.dark .TbwUpd * {
+  color: var(--link-header-color);
+}
+
+/* search box */
+html.dark div.RNNXgb:hover {
+  box-shadow: none;
+}
+html.dark div.aajZCb {
+  box-shadow: none;
+  border: solid 1px var(--border-light-color);
+  border-top: none;
+}
+
+/* remove box shadow */
+html.dark .Q3DXx {
+  box-shadow: none;
+}
+
+/* sticky header */
+html.dark .minidiv .sfbg {
+  box-shadow: 0 1px 0 0 var(--box-shadow-color);
+}
+
+html.dark .w8qArf .fl {
+  color: var(--front-light-color) !important;
+}
+html.dark .i8Msie {
+  filter: invert(1);
+}
+
+html.dark .ab_button {
+  background-image: none;
+}
+html.dark .ab_button .qpOrC {
+  color: var(--front-light-color) !important;
+}
+
+/* score box */
+html.dark .YPgUJe {
+  box-shadow: none;
+}
+
+/* tools */
+html.dark .hdtb-tl-sel {
+  background: none;
+}
+html.dark .GshZze:not(.hdtb-tl-sel):hover {
+  background: none;
+}
+
+/* tools -> last hour arrow */
+html.dark .nvELY {
+  filter: invert(1);
+}
+
+/* inline translator */
+html.dark #tw-source-text-container .tw-ta, #tw-source-rmn-container .tw-ta {
+  color: var(--front-light-color);
+}
+/* inline translator verified icon */
+html.dark .XrZwB img {
+  filter: invert(1);
+}
+
+/* homepage buttons */
+html.dark .jhp input[type="submit"],
+html.dark .tfB0Bf input[type="submit"],
+html.dark .sbdd_a input,
+html.dark .gbqfba {
+  background: none;
+  background-color: var(--button-bg);
+}
+
+/* homepage google products icon */
+html.dark .gb_D.gb_sc {
+  filter: invert(1);
+}
+
+/* timer */
+html.dark .act-tim-txt-cnt div,
+html.dark .wf-b .TVtOme div,
+html.dark .act-timer-section .act-tim-paused .act-tim-txt-cnt div {
+  color: var(--front-color) !important;
+  background-color: var(--bg-light-color) !important;
+}
+html.dark .act-tim-fullscreen-lbl img,
+html.dark .act-tim-cancel-fullscreen-lbl img,
+html.dark .act-tim-mute-lbl img,
+html.dark .act-tim-unmute-lbl img,
+html.dark .act-inactive-tab .act-inactive-timer-icon,
+html.dark .act-inactive-tab .act-inactive-stopwatch-icon {
+  filter: invert(1);
+}
+
+/* map fullscreen icon */
+html.dark .adgvqc img {
+  filter: invert(1);
+}
+
+/* selected search query */
+html.dark .sbhl {
+  background-color: var(--bg-color) !important;
+}
+
+/* text correction underline on search box */
+html.dark .pR49Ae span {
+  filter: invert(1);
+}
+
+/* dictionary */
+html.dark .dw-sb-cont .qjx3Xe {
+  background-color: var(--bg-color) !important;
+}
+/* dictionary selected item in menu */
+html.dark .gstl_51 .sbsb_d,
+html.dark .gstl_52 .sbsb_d {
+  background-color: var(--bg-color) !important;
+}
+
+/* search in site button */
+html.dark .U8shWc.Vy8nid img {
+  filter: invert(1);
+}

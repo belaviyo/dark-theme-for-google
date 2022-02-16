@@ -1,0 +1,9 @@
+html.dark mws-message-compose .input-background {
+  background: var(--bg-light-color) !important;
+}
+html.dark mws-message-part-content {
+  color: var(--bg-color) !important;
+}
+html.dark .picker-icon {
+  fill: var(--front-light-color) !important;
+}

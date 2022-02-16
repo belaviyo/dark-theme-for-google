@@ -1,0 +1,26 @@
+html.dark .gs_in_se .gs_icm,
+html.dark a.gs_in_ib .gs_ico,
+html.adrk .gs_in_cb input:checked~.gs_chk,
+html.dark .gs_in_cb.gs_sel .gs_chk {
+  filter: invert(1);
+}
+
+/* https://scholar.google.com/scholar_alerts?view_op=create_alert_options&hl=en&alert_query=ok&alert_params=%3Fhl%3Den%26as_sdt%3D0,5 */
+html.dark #gs_alerts_preview h3 span,
+html.dark #gs_alerts_preview a {
+  color: var(--link-color) !important;
+}
+
+html.dark img[src*="feather-72.png"] {
+  filter: invert(1);
+}
+
+
+html.dark #gs_ab {
+  background-color: var(--bg-color);
+}
+
+/* Firefox only link color */
+html.dark #gs_res_ccl h3 a {
+  color: var(--link-color) !important;
+}

@@ -1,0 +1,28 @@
+html.dark,
+html.dark body {
+  color: var(--front-color) !important;
+  background-color: var(--bg-light-color) !important;
+}
+
+html.dark #captcha-form ~ div > a {
+  color: var(--link-color);
+}
+
+html.dark ::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-color);
+}
+
+html.dark header {
+  background-color: var(--bg-light-color) !important;
+}
+
+/* login text */
+html.dark #gb a.gb_4.gb_4 {
+  color: var(--front-light-color);
+}
+
+html.dark iframe[src^="//consent.google.com"],
+html.dark iframe[src^="https://consent.google.com"] {
+  background-color: var(--fix-light-color);
+}

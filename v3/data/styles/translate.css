@@ -1,0 +1,13 @@
+html.dark .X4DQ0::after {
+  background: none;
+}
+
+html.dark .ita-kd-icon {
+  filter: invert(1);
+}
+
+/* arrow icon */
+html.dark .ita-kd-arrow.ita-kd-icon-span {
+  filter: invert(1);
+}
+

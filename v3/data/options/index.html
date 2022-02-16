@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title data-i18n="options_title"></title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+  <form action="#">
+    <div class="two">
+      <label for="front-color" data-i18n="options_font_color"></label>
+      <input type="color" id="front-color">
+      <label for="link-color" data-i18n="options_links_color"></label>
+      <input type="color" id="link-color">
+      <label for="visited-color" data-i18n="options_visited_color"></label>
+      <input type="color" id="visited-color">
+      <label for="link-header-color" data-i18n="options_links_header_color"></label>
+      <input type="color" id="link-header-color">
+      <label for="bg-color" data-i18n="options_bg_color"></label>
+      <input type="color" id="bg-color">
+      <label for="bg-light-color" data-i18n="options_bg_light_color"></label>
+      <input type="color" id="bg-light-color">
+      <label for="selection-color" data-i18n="options_selection_color"></label>
+      <input type="color" id="selection-color">
+      <label for="selection-bg" data-i18n="options_selection_bg"></label>
+      <input type="color" id="selection-bg">
+      <label class="sep" data-i18n="options_schedule_title"></label>
+      <div class="sep" id="schedule-container">
+        <input type="checkbox" id="schedule" class="bf">
+        <label for="day-time">From</label>
+        <input type="time" id="day-time" required>
+        <span>-</span>
+        <label for="night-time">To</label>
+        <input type="time" id="night-time" required>
+      </div>
+      <label for="state-scheme" data-i18n="options_scheme_title"></label>
+      <input type="checkbox" id="scheme" class="bf">
+      <label for="exclude-search" data-i18n="options_exclude_search"></label>
+      <input type="checkbox" id="exclude-search">
+      <label for="exclude-images" data-i18n="options_exclude_images"></label>
+      <input type="checkbox" id="exclude-images">
+      <label for="exclude-photos" data-i18n="options_exclude_photos"></label>
+      <input type="checkbox" id="exclude-photos">
+      <label for="exclude-translate" data-i18n="options_exclude_translate"></label>
+      <input type="checkbox" id="exclude-translate">
+      <label for="exclude-books" data-i18n="options_exclude_books"></label>
+      <input type="checkbox" id="exclude-books">
+      <label for="exclude-news" data-i18n="options_exclude_news"></label>
+      <input type="checkbox" id="exclude-news">
+      <label for="exclude-places" data-i18n="options_exclude_places"></label>
+      <input type="checkbox" id="exclude-places">
+      <label for="exclude-recipes" data-i18n="options_exclude_recipes"></label>
+      <input type="checkbox" id="exclude-recipes">
+      <label for="exclude-shopping" data-i18n="options_exclude_shopping"></label>
+      <input type="checkbox" id="exclude-shopping">
+      <label for="exclude-video" data-i18n="options_exclude_video"></label>
+      <input type="checkbox" id="exclude-video">
+      <label for="exclude-scholar" data-i18n="options_exclude_scholar"></label>
+      <input type="checkbox" id="exclude-scholar">
+      <label for="exclude-discussions" data-i18n="options_exclude_discussions"></label>
+      <input type="checkbox" id="exclude-discussions">
+      <label for="exclude-blog" data-i18n="options_exclude_blog"></label>
+      <input type="checkbox" id="exclude-blog">
+      <label for="exclude-messages" data-i18n="options_exclude_messages"></label>
+      <input type="checkbox" id="exclude-messages">
+      <label for="exclude-calendar" data-i18n="options_exclude_calendar"></label>
+      <input type="checkbox" id="exclude-calendar">
+      <label for="exclude-dark-meta" data-i18n="options_exclude_dark_meta"></label>
+      <input type="checkbox" id="exclude-dark-meta">
+      <label for="faqs" data-i18n="options_faqs"></label>
+      <input type="checkbox" id="faqs">
+    </div>
+
+    <p>Custom <a href="https://www.w3schools.com/Css/">CSS</a> rules: <textarea id="custom-css" rows="6" placeholder="Any CSS rule will be added to the default dark theme"></textarea></p>
+
+    <div id=explore></div>
+    <p>
+      <input type="button" id="support" data-i18n="options_support" data-i18n-value="value">
+      <input type="button" id="reset" data-i18n="options_reset" data-i18n-value="value"> - <input type="submit"  data-i18n="options_save" data-i18n-value="value">
+      <span id="status"></span>
+    </p>
+  </form>
+
+
+
+  <script src="index.js"></script>
+  <script async src="matched.js"></script>
+</body>
+</html>
