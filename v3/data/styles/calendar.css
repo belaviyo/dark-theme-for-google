@@ -2,3 +2,7 @@ html.dark .Jmftzc.EiZ8Dd.UflSff,
 html.dark .Jmftzc.YkxAAf.UflSff {
   color: #000 !important;
 }
+/* top right icons */
+html.dark .uW9umb svg {
+  fill: var(--front-color) !important;
+}

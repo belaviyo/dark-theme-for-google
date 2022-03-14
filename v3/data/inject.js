@@ -357,8 +357,16 @@ class Observe {
 
 const observe = new Observe();
 {
+  const cache = new WeakMap();
+
   const one = node => {
+    // remove the old cloned node; since the content is updated
+    if (cache.has(node)) {
+      const n = cache.get(node);
+      n.remove();
+    }
     const n = node.cloneNode(true);
+    cache.set(node, n);
     n.classList.add(DARK);
     n.removeAttribute('nonce');
     n.removeAttribute('id');
