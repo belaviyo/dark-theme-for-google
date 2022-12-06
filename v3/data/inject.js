@@ -20,6 +20,7 @@
   https://photos.google.com/?pli=1
   https://messages.google.com/web/conversations
   https://calendar.google.com/calendar/u/0/r
+  https://support.google.com/accounts/thread/3131026/how-can-i-know-if-im-using-the-current-version-of-gmail-account?hl=en
 */
 
 const DARK = 'dark';
@@ -101,6 +102,7 @@ class Observe {
   constructor() {
     this.cache = new WeakMap();
     this.enabled = true;
+    this.cstyles = getComputedStyle(document.documentElement);
   }
   check() {
     for (const sheet of document.styleSheets) {
@@ -126,34 +128,41 @@ class Observe {
     try {
       const check = rule => {
         const {style} = rule;
-        if (style.color) {
-          this.color(rule);
-        }
-        if (style['background-color']) {
-          this['background-color'](rule);
-        }
-        if (
-          style['border-color'] || style['border-top-color'] || style['border-bottom-color'] ||
-          style['border-left-color'] || style['border-right-color'] || style.stroke || style.fill
-        ) {
-          this.border(rule);
+        if (style) {
+          if (style.color) {
+            this.color(rule);
+          }
+          if (style['background-color']) {
+            this['background-color'](rule);
+          }
+          if (
+            style['border-color'] || style['border-top-color'] || style['border-bottom-color'] ||
+            style['border-left-color'] || style['border-right-color'] || style.stroke || style.fill
+          ) {
+            this.border(rule);
+          }
         }
       };
       const parse = sheet => {
         for (const rule of sheet.rules) {
-          if (rule.styleSheet) {
-            try {
-              parse(rule.styleSheet);
+          try {
+            if (rule.styleSheet) {
+              try {
+                parse(rule.styleSheet);
+              }
+              catch (e) {}
             }
-            catch (e) {}
-          }
-          if (rule.style) {
-            check(rule);
-          }
-          else if (rule.cssRules) {
-            for (const r of rule.cssRules) {
-              check(r);
+            if (rule.style) {
+              check(rule);
             }
+            else if (rule.cssRules) {
+              for (const r of rule.cssRules) {
+                check(r);
+              }
+            }
+          }
+          catch (e) {
+            console.warning(e);
           }
         }
       };
@@ -172,15 +181,19 @@ class Observe {
       var(--mdc-ripple-color,rgba(255,255,255,0.87))
       var(--mdc-ripple-color,#bb86fc)
     */
+
     str = str.replace(/var\(([^;]*)\)/g, (a, b) => {
-      try {
-        const [v, d] = b.split(/(?<!,),/).map(s => s.trim());
-        const r = getComputedStyle(document.body).getPropertyValue(v) || d || sub || a;
-        return r;
+      const first = b.split(/\s*,\s*/)[0];
+
+      if (first.startsWith('--')) {
+        const d = this.cstyles.getPropertyValue(first);
+        if (d) {
+          return d;
+        }
       }
-      catch (e) {
-        return a;
-      }
+      const second = b.replace(first, '').replace(/^\s*,\s*/, '');
+
+      return second || sub || a;
     }).trim();
 
     /* has important */
@@ -246,6 +259,7 @@ class Observe {
   }
   color(rule) {
     const o = this.parse(rule.style, 'color', '#000');
+
     const convert = ({r, g, b}) => {
       // red
       if ((r - g) > 50 && (b - g) > 50) {
@@ -476,6 +490,9 @@ const update = () => {
   if (prefs['exclude-news'] === true && location.hostname === 'news.google.com') {
     observe.exclude();
   }
+  // if (location.hostname === 'calendar.google.com') {
+  //   observe.exclude();
+  // }
   if (prefs['exclude-places'] === true && (location.search.includes('tbm=plcs') || location.search.includes('tbm=lcl'))
   ) {
     observe.exclude();

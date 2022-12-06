@@ -26,3 +26,7 @@ html.dark iframe[src^="//consent.google.com"],
 html.dark iframe[src^="https://consent.google.com"] {
   background-color: var(--fix-light-color);
 }
+
+html.dark table[bgcolor="#fff"] {
+  background-color: var(--bg-color) !important;
+}

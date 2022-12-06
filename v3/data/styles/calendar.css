@@ -6,3 +6,7 @@ html.dark .Jmftzc.YkxAAf.UflSff {
 html.dark .uW9umb svg {
   fill: var(--front-color) !important;
 }
+
+html.dark {
+  --surface: var(--bg-color);
+}
