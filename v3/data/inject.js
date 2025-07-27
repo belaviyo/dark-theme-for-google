@@ -290,7 +290,6 @@ class Observe {
   }
   'background-color'(rule) {
     const o = this.parse(rule.style, 'background-color', '#fff');
-    // console.log(o, rule.style['background-color']);
 
     const convert = ({r, g, b, replace}) => {
       // blue
@@ -309,6 +308,9 @@ class Observe {
     };
     if (o) {
       if (o.a > 0.5) {
+        // if (rule.selectorText && rule.selectorText.includes('Ww4FFb')) {
+        //   console.log(o, rule.cssText, rule.style['background-color'], convert(o));
+        // }
         rule.style.setProperty('background-color', convert(o), o.important);
       }
     }
@@ -372,6 +374,7 @@ class Observe {
 const observe = new Observe();
 {
   const cache = new WeakMap();
+  console.log(cache);
 
   const one = node => {
     // remove the old cloned node; since the content is updated
@@ -419,15 +422,36 @@ const observe = new Observe();
               nodes.add(node);
             }
           }
+          // make sure there is no child style element
+          for (const e of node.querySelectorAll('style')) {
+            nodes.add(e);
+          }
         }
       }
     }
+    // for (const sheet of document.styleSheets) {
+    //   if (sheet.by === 'me') {
+    //     continue;
+    //   }
+    //   const node = sheet.ownerNode;
+    //   if (nodes.has(node)) {
+    //     continue;
+    //   }
+    //   if (node && node.classList.contains(DARK) === false) {
+    //     if (cache.has(node) === false) {
+    //       console.log('skipped!!!', node, sheet, ms);
+    //       // nodes.add(node);
+    //     }
+    //   }
+    // }
+
     dup(nodes);
   });
   no.observe(document.documentElement, {
     subtree: true,
     childList: true
   });
+
   // check for modified style nodes
   const mo = new MutationObserver(ms => {
     const nodes = new Set();
